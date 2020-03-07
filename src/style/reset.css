@@ -1,0 +1,65 @@
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dd,input,textarea,button{
+	padding: 0;
+	margin:0;
+}
+img{
+	vertical-align: top;
+	border: 0;
+	/*vertical-align: top/middle/bottom;*/
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+li{
+	list-style: none;
+}
+textarea{
+	resize:none;
+}
+input,textarea,button,select{
+	outline: none;
+	color: inherit;
+	font-size: inherit;
+	font-family: inherit;
+}
+input[type="button"],input[type="submit"],input[type="reset"]{
+	cursor: pointer;
+}
+html{
+	font-family: "创中黑","微软雅黑","宋体",Arial;
+	/* font-size: 14px;
+	line-height: 24px; */
+	color: #203152;
+	/*font:14px/1 "微软雅黑","宋体",Arial;*/
+	background: #fafafa;
+}
+
+
+/*单行省略*/
+.sl{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+/*万能清除法*/
+.cl:after{
+	content: "";
+	display: block;
+	clear: both;
+
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+.cl{
+	zoom:1;
+}
+
+html, body {
+	font-size: calc(100vw/7.5);
+}
+body{
+	font-size: .3rem;
+	box-sizing: border-box;
+}

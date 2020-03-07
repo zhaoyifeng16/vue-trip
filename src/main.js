@@ -3,6 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// mintui
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI);
+
+// reset.css
+import "./style/font.css";
+import "./style/reset.css"
+
 Vue.config.productionTip = false
 
 new Vue({
