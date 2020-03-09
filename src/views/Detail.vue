@@ -11,36 +11,19 @@
       <div class="hotels">
         <p>{{detailInfo.hotelCount}}家酒店可用</p>
       </div>
-      <div class="trvaled">
-        <ul>
-          <li>
-            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583581990744&di=a046b14e7495aca7e8fb3851e0a52915&imgtype=0&src=http%3A%2F%2Fku.90sjimg.com%2Felement_origin_min_pic%2F17%2F11%2F23%2F991ef2e724040f17e61a6d654d67f2d0.jpg"
-                 alt/>
-          </li>
-          <li>
-            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583581990744&di=a046b14e7495aca7e8fb3851e0a52915&imgtype=0&src=http%3A%2F%2Fku.90sjimg.com%2Felement_origin_min_pic%2F17%2F11%2F23%2F991ef2e724040f17e61a6d654d67f2d0.jpg"
-                 alt/>
-          </li>
-          <li>
-            <p>+8</p>
-          </li>
-        </ul>
-        <p>参观了这个城市</p>
-      </div>
+      <Visited :visited-count="detailInfo.visited" :avatars="detailInfo.avatars"></Visited>
     </div>
 
     <!--图片-->
     <div class="img">
       <img v-lazy="detailInfo.img" alt="">
-      <div class="score">
-        <p>{{detailInfo.score}}</p>
-      </div>
+      <Score>{{detailInfo.score}}</Score>
     </div>
 
     <!--描述-->
     <div class="desc">
       <p v-for="item in detailInfo.descs">{{item}}</p>
-      <div class="btn-hotel-list">酒店列表</div>
+      <div class="btn-hotel-list" @click="toHotelList">酒店列表</div>
     </div>
   </div>
 
@@ -48,6 +31,8 @@
 
 <script>
   import api from "../api/index"
+  import Visited from "../components/Visited";
+  import Score from "../components/Score";
 
   export default {
     name: "Detail",
@@ -59,6 +44,9 @@
     methods: {
       back() {
         this.$router.go(-1)
+      },
+      toHotelList() {
+        this.$router.push("/hotellist")
       }
     },
     created() {
@@ -67,7 +55,8 @@
         console.log(data.data)
         this.detailInfo = data.data
       })
-    }
+    },
+    components: {Visited, Score}
   }
 </script>
 
@@ -112,46 +101,10 @@
       }
     }
 
-
-    .trvaled {
-      display: flex;
+    .visited {
+      /*display: flex;*/
       justify-content: center;
       margin-top: .2rem;
-      line-height: 0.68rem;
-
-      ul {
-        display: flex;
-
-        li {
-          width: 0.68rem;
-          height: 0.68rem;
-          text-align: center;
-          border-radius: 50%;
-          overflow: hidden;
-
-          img {
-            width: 100%;
-            height: 100%;
-          }
-
-          &:last-child {
-            background: #5680fa;
-            font-size: 0.24rem;
-            color: #fff;
-          }
-
-          &:nth-of-type(2) {
-            position: relative;
-            left: -0.12rem;
-          }
-
-          &:nth-of-type(3) {
-            position: relative;
-            left: -0.24rem;
-          }
-        }
-      }
-
     }
   }
 
@@ -170,19 +123,8 @@
 
     .score {
       position: absolute;
-      width: 1rem;
-      height: .7rem;
-      text-align: center;
-      line-height: .7rem;
-      background: #fa607d;
       top: .4rem;
       right: .4rem;
-      border-radius: .5rem;
-      color: #fff;
-
-      p {
-
-      }
     }
   }
 

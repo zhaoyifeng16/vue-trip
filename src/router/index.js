@@ -10,6 +10,8 @@ import Category from './../views/Category.vue'
 import My from './../views/My.vue'
 // 地点详情
 import Detail from './../views/Detail.vue'
+// 酒店列表
+import HotelList from './../views/HotelList'
 
 Vue.use(VueRouter)
 
@@ -38,6 +40,12 @@ const routes = [
         path: "/detail/:id",
         name: 'Detail',
         component: Detail
+    },
+    {
+
+        path: "/hotellist",
+        name: 'HotelList',
+        component: HotelList
     },
     {
         path: '/',
