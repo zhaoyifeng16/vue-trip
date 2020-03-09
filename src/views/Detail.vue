@@ -46,7 +46,9 @@
         this.$router.go(-1)
       },
       toHotelList() {
-        this.$router.push("/hotellist")
+        // console.log(this.detailInfo)
+        let {id} = this.$route.params
+        this.$router.push(`/hotellist/${id}`)
       }
     },
     created() {

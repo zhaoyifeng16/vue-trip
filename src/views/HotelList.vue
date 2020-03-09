@@ -5,22 +5,22 @@
       <div class="back">
         <i class="iconfont icon-fanhui" @click="back"></i>
       </div>
-      <h1>拉斯维加斯</h1>
-      <h2>21312家酒店可用</h2>
+      <h1>{{hotelInfo.name}}</h1>
+      <h2>{{hotelList.length}}家酒店可用</h2>
       <Search></Search>
     </div>
     <div class="list">
       <ul>
-        <li v-for="item in 9">
+        <li v-for="item in hotelList">
           <div class="left">
-            <img src="" alt="">
+            <img :src="item.img" alt="">
           </div>
           <div class="center">
-            <h3>蓝色厉声酒店</h3>
-            <Visited visited-count="8" :avatars="avatars"></Visited>
+            <h3>{{item.hotelName}}</h3>
+            <Visited :visited-count="item.visited" :avatars="item.avatars"></Visited>
           </div>
           <div class="right">
-            <Score>{{9.1}}</Score>
+            <Score>{{item.score}}</Score>
           </div>
         </li>
       </ul>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+  import api from "../api"
   import Search from "../components/Search";
   import Visited from "../components/Visited";
   import Score from "../components/Score";
@@ -37,13 +38,23 @@
     name: "HotelList",
     data() {
       return {
-        avatars: ["http://bpic.588ku.com/original_pic/19/04/12/0f2a7c0bdd72589d84ebe863b65c2e4e.jpg", "http://bpic.588ku.com/original_pic/19/04/12/0f2a7c0bdd72589d84ebe863b65c2e4e.jpg"]
+        // avatars: ["http://bpic.588ku.com/original_pic/19/04/12/0f2a7c0bdd72589d84ebe863b65c2e4e.jpg", "http://bpic.588ku.com/original_pic/19/04/12/0f2a7c0bdd72589d84ebe863b65c2e4e.jpg"]
+        hotelInfo: {},
+        hotelList:[]
       }
     },
     methods: {
       back() {
         this.$router.go(-1)
       }
+    },
+    created() {
+      let {id} = this.$route.params
+      api.getHotels(id).then(data => {
+        this.hotelInfo = data.data
+        this.hotelList = this.hotelInfo.list
+        console.log(this.hotelInfo)
+      })
     },
     components: {
       Search, Visited, Score
@@ -100,6 +111,7 @@
     top: 3.35rem;
     bottom: 0;
     overflow-y: scroll;
+    width: 100%;
 
     ul {
 

@@ -27,6 +27,7 @@
       border-radius: 1rem;
       padding-left: 0.38rem;
       font-size: 0.34rem;
+      box-shadow: 0 7px 41px 1px rgba(221, 221, 221, 0.5);
 
       i {
         font-size: 0.34rem;

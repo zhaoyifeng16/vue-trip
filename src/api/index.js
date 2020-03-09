@@ -17,5 +17,11 @@ export default {
   getDetail(id) {
     let url = "http://yapi.demo.qunar.com/mock/86871/getDetail"
     return axios.post(url,id)
+  },
+
+  // 获取酒店列表
+  getHotels(id) {
+    let url = "http://yapi.demo.qunar.com/mock/86871/getHotels"
+    return axios.post(url,id)
   }
 }
