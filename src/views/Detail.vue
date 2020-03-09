@@ -1,5 +1,5 @@
 <template>
-  <div class="detail animated rotateIn">
+  <div class="detail">
     <!--返回按钮-->
     <div class="back">
       <i class="iconfont icon-fanhui" @click="back"></i>
@@ -7,9 +7,9 @@
 
     <!--标题-->
     <div class="titel">
-      <h1>拉斯维加斯</h1>
+      <h1>{{detailInfo.name}}</h1>
       <div class="hotels">
-        <p>123123家酒店可用</p>
+        <p>{{detailInfo.hotelCount}}家酒店可用</p>
       </div>
       <div class="trvaled">
         <ul>
@@ -31,16 +31,15 @@
 
     <!--图片-->
     <div class="img">
-      <img src="//images3.c-ctrip.com/overseas/city/singapore256-256.jpg" alt="">
+      <img v-lazy="detailInfo.img" alt="">
       <div class="score">
-        <p>9.2</p>
+        <p>{{detailInfo.score}}</p>
       </div>
     </div>
 
     <!--描述-->
     <div class="desc">
-      <p>拉斯维加斯位于克拉克县莫哈韦沙漠底部的盆地内，四周都是山脉。</p>
-      <p>大部分地区多岩石，干旱，有沙漠植被和野生动物。它可能遭受猛烈的山洪暴发。</p>
+      <p v-for="item in detailInfo.descs">{{item}}</p>
       <div class="btn-hotel-list">酒店列表</div>
     </div>
   </div>
@@ -48,19 +47,32 @@
 </template>
 
 <script>
+  import api from "../api/index"
+
   export default {
     name: "Detail",
+    data() {
+      return {
+        detailInfo: {},
+      }
+    },
     methods: {
       back() {
         this.$router.go(-1)
       }
+    },
+    created() {
+      let {id} = this.$route.params
+      api.getDetail(id).then(data => {
+        console.log(data.data)
+        this.detailInfo = data.data
+      })
     }
   }
 </script>
 
 <style scoped lang="scss">
   @import "../style/mixins.scss";
-  @import "~animate.css/animate.min.css";
 
   .detail {
     position: fixed;
@@ -153,6 +165,7 @@
       width: 5.90rem;
       height: 5.47rem;
       border-radius: .2rem;
+      object-fit: cover;
     }
 
     .score {

@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <!-- 滑动块 -->
+    <!-- 分类滑动块 -->
     <div class="scroll-container">
       <ul>
         <li
@@ -33,12 +33,15 @@
           <i class="iconfont icon-enter"></i>
         </p>
       </div>
+
+      <van-loading color="#4a90e2" v-if="!popularList.length"/>
       <ul>
         <li v-for="(item,index) in popularList"
             :key="index"
             @click="toDetail(item.id)"
-            :style="`background-image:url(${item.img})`"
+            v-lazy:background-image="item.img"
         >
+          <!--:style="`background-image:url(${item.img})`"-->
           <!--<img :src="item.img" alt />-->
           <div class="score">{{item.score}}</div>
           <div class="desc">
@@ -81,12 +84,14 @@
       }
     },
     created() {
+      // 获取受欢迎的
       api.getPopular().then(data => {
         this.popularList = data.data.data.list;
-        console.log(data)
       });
-      api.getHomeScoll().then(data => {
+      // 获取首页分类
+      api.getCategory().then(data => {
         this.homeTab = data.data.data.list;
+        console.log(data)
       });
     }
   };
@@ -150,6 +155,10 @@
   .popular {
     @include sidePadding;
 
+    .van-loading {
+      text-align: center;
+    }
+
     .ti {
       display: flex;
       justify-content: space-between;
@@ -171,7 +180,7 @@
       }
     }
 
-    > ul {
+    ul {
       padding-bottom: 1rem;
 
       > li {
