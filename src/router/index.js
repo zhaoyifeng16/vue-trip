@@ -8,40 +8,47 @@ import Star from './../views/Star.vue'
 import Category from './../views/Category.vue'
 // 我的
 import My from './../views/My.vue'
+// 地点详情
+import Detail from './../views/Detail.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/home',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/star',
-    name: 'Star',
-    component: Star
-  },
-  {
-    path: '/category',
-    name: 'Category',
-    component: Category
-  },
-  {
-    path: '/my',
-    name: 'My',
-    component: My
-  },
-  {
-    path: '/',
-    redirect: 'home',
-  }
+    {
+        path: '/home',
+        name: 'Home',
+        component: Home,
+    },
+    {
+        path: '/star',
+        name: 'Star',
+        component: Star
+    },
+    {
+        path: '/category',
+        name: 'Category',
+        component: Category
+    },
+    {
+        path: '/my',
+        name: 'My',
+        component: My
+    },
+    {
+        path: "/detail/:id",
+        name: 'Detail',
+        component: Detail
+    },
+    {
+        path: '/',
+        redirect: 'home',
+    },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router

@@ -1,19 +1,20 @@
 <template>
   <div id="app">
     <router-view/>
-    <Tab></Tab> 
+    <Tab></Tab>
   </div>
 </template>
 
 <script>
-import Tab from "./components/Tab"
-export default {
-  
-  components:{
-    Tab
+  import Tab from "./components/Tab"
+
+  export default {
+
+    components: {
+      Tab
+    }
   }
-}
 </script>
 <style lang="scss">
-@import "./style/mixins.scss";
+  @import "./style/mixins.scss";
 </style>
