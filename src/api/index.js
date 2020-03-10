@@ -16,13 +16,13 @@ export default {
   // 获取详情
   getDetail(id) {
     let url = "http://yapi.demo.qunar.com/mock/86871/getDetail"
-    return axios.post(url,id)
+    return axios.post(url, id)
   },
 
   // 获取酒店列表
   getHotels(id) {
     let url = "http://yapi.demo.qunar.com/mock/86871/getHotels"
-    return axios.post(url,id)
+    return axios.post(url, id)
   },
 
   // 获取热门搜索
@@ -32,8 +32,14 @@ export default {
   },
 
   // 搜索
-  search(keyword){
+  search(keyword) {
     let url = "http://yapi.demo.qunar.com/mock/86871/search"
-    return axios.post(url,keyword)
+    return axios.post(url, keyword)
+  },
+
+  // 通过类型id获取城市
+  getCityByCategory(id) {
+    let url = "http://yapi.demo.qunar.com/mock/86871/getCityByCategory"
+    return axios.post(url, id)
   }
 }

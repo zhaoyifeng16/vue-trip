@@ -16,7 +16,7 @@
 
     <!--图片-->
     <div class="img">
-      <img v-lazy="detailInfo.img" alt="">
+      <img :src="detailInfo.img" alt="">
       <Score>{{detailInfo.score}}</Score>
     </div>
 

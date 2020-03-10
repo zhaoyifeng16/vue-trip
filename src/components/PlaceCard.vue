@@ -51,7 +51,7 @@
       top: 1.6rem;
       left: -0.2rem;
       padding-left: 0.33rem;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.7);
 
       h3 {
         line-height: 0.62rem;
