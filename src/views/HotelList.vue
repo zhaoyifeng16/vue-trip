@@ -12,16 +12,23 @@
     <div class="list">
       <ul>
         <li v-for="item in hotelList">
-          <div class="left">
-            <img :src="item.img" alt="">
-          </div>
-          <div class="center">
-            <h3>{{item.hotelName}}</h3>
-            <Visited :visited-count="item.visited" :avatars="item.avatars"></Visited>
-          </div>
-          <div class="right">
-            <Score>{{item.score}}</Score>
-          </div>
+          <HotelCard
+                  :hotel-name="item.hotelName"
+                  :img="item.img"
+                  :score="item.score"
+                  :avatars="item.avatars"
+                  :visited="item.visited"
+          ></HotelCard>
+          <!--<div class="left">-->
+          <!--  <img :src="item.img" alt="">-->
+          <!--</div>-->
+          <!--<div class="center">-->
+          <!--  <h3>{{item.hotelName}}</h3>-->
+          <!--  <Visited :visited-count="item.visited" :avatars="item.avatars"></Visited>-->
+          <!--</div>-->
+          <!--<div class="right">-->
+          <!--  <Score>{{item.score}}</Score>-->
+          <!--</div>-->
         </li>
       </ul>
     </div>
@@ -31,8 +38,7 @@
 <script>
   import api from "../api"
   import SearchBar from "../components/SearchBar";
-  import Visited from "../components/Visited";
-  import Score from "../components/Score";
+  import HotelCard from "../components/HotelCard";
 
   export default {
     name: "HotelList",
@@ -57,7 +63,7 @@
       })
     },
     components: {
-      SearchBar, Visited, Score
+      SearchBar,HotelCard
     }
   }
 </script>
@@ -112,49 +118,6 @@
     bottom: 0;
     overflow-y: scroll;
     width: 100%;
-
-    ul {
-
-      li {
-        display: flex;
-        height: 2.20rem;
-        border-bottom: 2px solid #e0e0e0;
-        @include sidePadding;
-        padding-top: .4rem;
-        padding-bottom: .4rem;
-
-        .left {
-          width: 1.46rem;
-          height: 1.40rem;
-          background-color: #ff000b;
-          border-radius: .15rem;
-          overflow: hidden;
-
-          img {
-            width: 100%;
-            height: 100%;
-          }
-        }
-
-        .center {
-          flex: 1;
-          margin-left: .4rem;
-
-          h3 {
-            line-height: .4rem;
-            font-size: .28rem;
-          }
-
-          .visited {
-            margin-top: .23rem;
-          }
-        }
-
-        .right {
-          align-self: start;
-        }
-      }
-    }
   }
 
 </style>
