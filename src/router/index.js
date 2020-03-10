@@ -12,6 +12,8 @@ import My from './../views/My.vue'
 import Detail from './../views/Detail.vue'
 // 酒店列表
 import HotelList from './../views/HotelList'
+// 搜索页
+import Search from './../views/Search'
 
 Vue.use(VueRouter)
 
@@ -42,10 +44,14 @@ const routes = [
         component: Detail
     },
     {
-
         path: "/hotellist/:id",
         name: 'HotelList',
         component: HotelList
+    },
+    {
+        path: "/search/",
+        name: 'Search',
+        component: Search
     },
     {
         path: '/',

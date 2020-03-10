@@ -7,7 +7,7 @@
       </div>
       <h1>{{hotelInfo.name}}</h1>
       <h2>{{hotelList.length}}家酒店可用</h2>
-      <Search></Search>
+      <SearchBar></SearchBar>
     </div>
     <div class="list">
       <ul>
@@ -30,7 +30,7 @@
 
 <script>
   import api from "../api"
-  import Search from "../components/Search";
+  import SearchBar from "../components/SearchBar";
   import Visited from "../components/Visited";
   import Score from "../components/Score";
 
@@ -57,7 +57,7 @@
       })
     },
     components: {
-      Search, Visited, Score
+      SearchBar, Visited, Score
     }
   }
 </script>

@@ -3,7 +3,7 @@
     <h1>说走就想走的旅行</h1>
 
     <!-- 搜索框 -->
-    <Search></Search>
+    <SearchBar></SearchBar>
 
     <!-- 分类滑动块 -->
     <div class="scroll-container">
@@ -48,7 +48,7 @@
 
 <script>
   import api from "../api";
-  import Search from "../components/Search";
+  import SearchBar from "../components/SearchBar";
   import PlaceCard from "../components/PlaceCard";
 
   export default {
@@ -76,7 +76,7 @@
         console.log(data)
       });
     },
-    components: {Search,PlaceCard}
+    components: {SearchBar,PlaceCard}
   };
 </script>
 

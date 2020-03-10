@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div class="search-bar" @click="toSearch">
     <div class="bg">
       <p>
         <i class="iconfont icon-search"></i>
@@ -11,13 +11,18 @@
 
 <script>
   export default {
-    name: "Search"
+    name: "SearchBar",
+    methods:{
+      toSearch(){
+        this.$router.push("/search")
+      }
+    }
   }
 </script>
 
 <style scoped lang="scss">
   @import "../style/mixins.scss";
-  .search {
+  .search-bar {
     @include sidePadding;
     font-weight: 900;
 
