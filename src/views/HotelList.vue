@@ -17,6 +17,7 @@
                 @load="onLoad"
         >
           <HotelCard
+                  v-for="(item, index) in hotelList" :key="index"
                   :hotel-name="item.hotelName"
                   :img="item.img"
                   :score="item.score"
