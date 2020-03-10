@@ -10,8 +10,12 @@
       <SearchBar></SearchBar>
     </div>
     <div class="list">
-      <ul>
-        <li v-for="item in hotelList">
+      <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+        <van-list
+                v-model="loading"
+                :finished="finished"
+                @load="onLoad"
+        >
           <HotelCard
                   :hotel-name="item.hotelName"
                   :img="item.img"
@@ -19,18 +23,8 @@
                   :avatars="item.avatars"
                   :visited="item.visited"
           ></HotelCard>
-          <!--<div class="left">-->
-          <!--  <img :src="item.img" alt="">-->
-          <!--</div>-->
-          <!--<div class="center">-->
-          <!--  <h3>{{item.hotelName}}</h3>-->
-          <!--  <Visited :visited-count="item.visited" :avatars="item.avatars"></Visited>-->
-          <!--</div>-->
-          <!--<div class="right">-->
-          <!--  <Score>{{item.score}}</Score>-->
-          <!--</div>-->
-        </li>
-      </ul>
+        </van-list>
+      </van-pull-refresh>
     </div>
   </div>
 </template>
@@ -44,26 +38,38 @@
     name: "HotelList",
     data() {
       return {
-        // avatars: ["http://bpic.588ku.com/original_pic/19/04/12/0f2a7c0bdd72589d84ebe863b65c2e4e.jpg", "http://bpic.588ku.com/original_pic/19/04/12/0f2a7c0bdd72589d84ebe863b65c2e4e.jpg"]
         hotelInfo: {},
-        hotelList:[]
+        hotelList: [],
+        loading: false,
+        finished: false,
+        refreshing: false
       }
     },
     methods: {
       back() {
         this.$router.go(-1)
-      }
-    },
-    created() {
-      let {id} = this.$route.params
-      api.getHotels(id).then(data => {
-        this.hotelInfo = data.data
-        this.hotelList = this.hotelInfo.list
-        console.log(this.hotelInfo)
-      })
+      },
+      getHotelInfo() {
+        let {id} = this.$route.params
+        api.getHotels(id).then(data => {
+          this.hotelInfo = data.data
+          this.hotelList = this.hotelInfo.list
+          console.log(this.hotelInfo)
+          this.loading = false;
+          this.refreshing = false;
+          this.finished = true;
+        })
+      },
+      onLoad() {
+        this.getHotelInfo();
+      },
+      onRefresh() {
+        this.loading = true;
+        this.onLoad();
+      },
     },
     components: {
-      SearchBar,HotelCard
+      SearchBar, HotelCard
     }
   }
 </script>

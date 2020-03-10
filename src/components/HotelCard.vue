@@ -1,7 +1,7 @@
 <template>
   <div class="hotel-card">
     <div class="left">
-      <img :src="img" alt="">
+      <img v-lazy="img" alt="">
     </div>
     <div class="center">
       <h3>{{hotelName}}</h3>
