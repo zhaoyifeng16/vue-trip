@@ -3,8 +3,10 @@
     <div class="real-search-bar">
       <div class="bg">
         <i class="iconfont icon-search"></i>
-        <input type="text" placeholder="搜索目的地..." v-model="inpVal" @keydown.enter="search">
-        <i class="iconfont icon-close1" @click="back"></i>
+        <div class="input">
+          <input type="text" placeholder="搜索目的地..." v-model="inpVal" @keydown.enter="search">
+        </div>
+        <i class="iconfont icon-close" @click="back"></i>
       </div>
     </div>
 
@@ -57,9 +59,9 @@
           let {code, id} = data.data
           console.log(code)
           if (code == 0) { // 搜索匹配到
-           this.$toast.clear();
-           this.$router.push(`/hotellist/${id}`)
-          }else {
+            this.$toast.clear();
+            this.$router.push(`/hotellist/${id}`)
+          } else {
             console.log("没有找到")
             this.$toast.clear();
             this.$toast("没有找到")
@@ -120,12 +122,14 @@
         color: #4a90e2;
         padding: 0 .1rem;
       }
-
+      .input{
+        flex: 1;
+      }
       input {
         height: 100%;
         border: none;
         background-color: transparent;
-        flex: 1;
+        width: 100%;
       }
     }
   }
