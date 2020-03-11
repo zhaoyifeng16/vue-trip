@@ -45,8 +45,7 @@ const routes = [
         name: 'Login',
         component: Login,
       }
-    ]
-
+    ],
   },
   {
     path: "/detail/:id",
@@ -73,6 +72,22 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+// 全局导航守卫
+router.beforeEach((to, from, next) => {
+  if(to.path == "/my"){
+    let {token} = router.app.$options.store.state;
+    // 如果token存在就放行，否则跳转到登录页
+    if(token){
+      next();
+    }else {
+      console.log("没有token，进入登录")
+      next({path:'/my/login'})
+    }
+  }else {
+    next()
+  }
 })
 
 export default router

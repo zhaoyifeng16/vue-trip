@@ -60,7 +60,7 @@
             this.$toast("用户名或密码错误")
           } else {
             this.setToken(token)
-            this.$router.push("my");
+            this.$router.push("/my");
           }
         })
       }
