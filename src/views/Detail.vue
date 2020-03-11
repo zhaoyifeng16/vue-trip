@@ -5,22 +5,28 @@
 
     <!--标题-->
     <div class="titel">
-      <h1>{{detailInfo.name}}</h1>
-      <div class="hotels">
-        <p>{{detailInfo.hotelCount}}家酒店可用</p>
-      </div>
-      <Visited :visited-count="detailInfo.visited" :avatars="detailInfo.avatars"></Visited>
+      <van-skeleton title :loading="loading" :row="3">
+        <h1>{{detailInfo.name}}</h1>
+        <div class="hotels">
+          <p>{{detailInfo.hotelCount}}家酒店可用</p>
+        </div>
+        <Visited :visited-count="detailInfo.visited" :avatars="detailInfo.avatars"></Visited>
+      </van-skeleton>
     </div>
 
     <!--图片-->
     <div class="img">
-      <img :src="detailInfo.img" alt="">
-      <Score>{{detailInfo.score}}</Score>
+      <van-skeleton avatar :loading="loading" avatar-shape="square" avatar-size="5.5rem">
+        <img :src="detailInfo.img" alt="">
+        <Score>{{detailInfo.score}}</Score>
+      </van-skeleton>
     </div>
 
     <!--描述-->
     <div class="desc">
-      <p v-for="item in detailInfo.descs">{{item}}</p>
+      <van-skeleton title :loading="loading" :row="2">
+        <p v-for="item in detailInfo.descs">{{item}}</p>
+      </van-skeleton>
       <div class="btn-hotel-list" @click="toHotelList">酒店列表</div>
     </div>
   </div>
@@ -38,6 +44,7 @@
     data() {
       return {
         detailInfo: {},
+        loading: true
       }
     },
     methods: {
@@ -55,6 +62,8 @@
       api.getDetail(id).then(data => {
         console.log(data.data)
         this.detailInfo = data.data
+
+        this.loading = false
       })
     },
     components: {Visited, Score, Back}
