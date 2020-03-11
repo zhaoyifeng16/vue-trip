@@ -1,24 +1,24 @@
 <template>
   <div class="tab">
-    <router-link to="home" active-class="active">
+    <router-link to="/home" active-class="active">
       <i class="iconfont icon-homepage"></i>
     </router-link>
 
-    <router-link to="star" active-class="active">
+    <router-link to="/star" active-class="active">
       <i class="iconfont icon-like"></i>
     </router-link>
 
-    <div class="add">
+    <div class="/add">
       <div class="bg">
         <i class="iconfont icon-jia"></i>
       </div>
     </div>
 
-    <router-link to="category" active-class="active">
+    <router-link to="/category" active-class="active">
       <i class="iconfont icon-manage"></i>
     </router-link>
 
-    <router-link to="my" active-class="active">
+    <router-link to="/my" active-class="active">
       <i class="iconfont icon-people"></i>
     </router-link>
   </div>
