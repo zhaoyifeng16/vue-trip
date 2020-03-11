@@ -41,5 +41,12 @@ export default {
   getCityByCategory(id) {
     let url = "http://yapi.demo.qunar.com/mock/86871/getCityByCategory"
     return axios.post(url, `id=${id}`)
+  },
+
+  // 登录
+  login(userInfo) {
+    let {username, pwd} = userInfo
+    let url = "http://yapi.demo.qunar.com/mock/86871/login"
+    return axios.post(url, `username=${username}&pwd=${pwd}`)
   }
 }

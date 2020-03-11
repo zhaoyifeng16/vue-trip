@@ -1,9 +1,7 @@
 <template>
   <div class="detail">
     <!--返回按钮-->
-    <div class="back">
-      <i class="iconfont icon-fanhui" @click="back"></i>
-    </div>
+    <Back></Back>
 
     <!--标题-->
     <div class="titel">
@@ -33,6 +31,7 @@
   import api from "../api/index"
   import Visited from "../components/Visited";
   import Score from "../components/Score";
+  import Back from "../components/Back";
 
   export default {
     name: "Detail",
@@ -58,7 +57,7 @@
         this.detailInfo = data.data
       })
     },
-    components: {Visited, Score}
+    components: {Visited, Score, Back}
   }
 </script>
 
@@ -71,15 +70,6 @@
     height: 100%;
     background: #fafafa;
     z-index: 1;
-  }
-
-  .back {
-    padding-left: .37rem;
-
-    i {
-      font-size: .33rem;
-      line-height: .67rem;
-    }
   }
 
   .titel {

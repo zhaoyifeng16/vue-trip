@@ -2,9 +2,7 @@
   <div class="hotel-list">
     <div class="top">
       <!--返回按钮-->
-      <div class="back">
-        <i class="iconfont icon-fanhui" @click="back"></i>
-      </div>
+      <Back></Back>
       <h1>{{hotelInfo.name}}</h1>
       <h2>{{hotelList.length}}家酒店可用</h2>
       <SearchBar></SearchBar>
@@ -34,6 +32,7 @@
   import api from "../api"
   import SearchBar from "../components/SearchBar";
   import HotelCard from "../components/HotelCard";
+  import Back from "../components/Back";
 
   export default {
     name: "HotelList",
@@ -70,7 +69,7 @@
       },
     },
     components: {
-      SearchBar, HotelCard
+      SearchBar, HotelCard,Back
     }
   }
 </script>
@@ -94,16 +93,6 @@
     width: 100%;
     z-index: 1;
     padding-bottom: .14rem;
-  }
-
-
-  .back {
-    padding-left: .37rem;
-
-    i {
-      font-size: .33rem;
-      line-height: .67rem;
-    }
   }
 
   h1 {
