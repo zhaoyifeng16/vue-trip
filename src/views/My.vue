@@ -62,6 +62,10 @@
 <style scoped lang="scss">
   @import "../style/mixins.scss";
 
+  .my{
+    @include exBottomTap;
+  }
+
   .bg {
     position: fixed;
     width: 100%;
@@ -144,10 +148,9 @@
       display: flex;
       li{
         width: 3.2rem;
-        height: 2.9rem;
         img{
           width: 100%;
-          height: 100%;
+          height: 2.9rem;
           border-radius: .18rem;
         }
         p{

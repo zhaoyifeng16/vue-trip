@@ -76,12 +76,16 @@
         console.log(data)
       });
     },
-    components: {SearchBar,PlaceCard}
+    components: {SearchBar, PlaceCard}
   };
 </script>
 
 <style lang="scss" scoped>
   @import "../style/mixins.scss";
+
+  .home {
+    @include exBottomTap;
+  }
 
   h1 {
     line-height: 1.54rem;
@@ -139,10 +143,6 @@
           font-size: 0.28rem;
         }
       }
-    }
-
-    ul {
-      padding-bottom: 1rem;
     }
   }
 </style>

@@ -5,7 +5,7 @@
         <h3>类别</h3>
         <!--下拉菜单-->
         <van-dropdown-menu>
-          <van-dropdown-item  @change="changeCategory" v-model="currentId" :options="options"/>
+          <van-dropdown-item @change="changeCategory" v-model="currentId" :options="options"/>
         </van-dropdown-menu>
       </div>
       <!--搜索栏-->
@@ -43,21 +43,21 @@
         list: []
       }
     },
-    methods:{
+    methods: {
       // 获取数据
-      getData(){
+      getData() {
         api.getCityByCategory(this.currentId).then(data => {
           this.list = data.data.list
         })
       },
 
       // 类别切换
-      changeCategory(){
+      changeCategory() {
         this.getData()
       },
 
       // 跳转到详情
-      toDetail(id){
+      toDetail(id) {
         this.$router.push(`/detail/${id}`)
       }
     },
@@ -86,6 +86,10 @@
 
 <style scoped lang="scss">
   @import "../style/mixins.scss";
+
+  .category {
+    @include exBottomTap;
+  }
 
   .title {
     display: flex;
