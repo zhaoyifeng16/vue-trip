@@ -54,7 +54,12 @@
           email: this.email,
           pwd: this.pwd
         }
+        this.$toast.loading({
+          message: '加载中...',
+          forbidClick: true
+        });
         api.login(userInfo).then(data => {
+          this.$toast.clear()
           let {code, token} = data.data;
           if (code) {
             this.$toast("用户名或密码错误")
