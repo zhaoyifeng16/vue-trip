@@ -36,11 +36,11 @@
     <div class="infoDetail">
       <ul>
         <li>
-          <img src="http://hbimg.b0.upaiyun.com/5645551ead27567e570bc9372ed6ecd0b756e203202c7-51sBxx_fw658" alt="">
+          <img src="http://img1.imgtn.bdimg.com/it/u=2108341618,2453065867&fm=26&gp=0.jpg" alt="">
           <p>酒店</p>
         </li>
         <li>
-          <img src="http://hbimg.b0.upaiyun.com/5645551ead27567e570bc9372ed6ecd0b756e203202c7-51sBxx_fw658" alt="">
+          <img src="http://img1.imgtn.bdimg.com/it/u=2108341618,2453065867&fm=26&gp=0.jpg" alt="">
           <p>记忆</p>
         </li>
       </ul>
@@ -143,9 +143,11 @@
     ul{
       display: flex;
       li{
+        width: 3.2rem;
+        height: 2.9rem;
         img{
           width: 100%;
-          height: 2.9rem;
+          height: 100%;
           border-radius: .18rem;
         }
         p{

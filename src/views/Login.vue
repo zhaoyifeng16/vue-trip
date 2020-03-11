@@ -14,8 +14,8 @@
           <input type="text" name="" id="email" placeholder="输入邮箱地址" v-model="email">
         </div>
         <div class="pwd item">
-          <label for="pwd">密码</label>
           <div class="pwd-input">
+            <label for="pwd">密码</label>
             <input type="password" name="" id="pwd" placeholder="输入密码" v-model="pwd">
             <p>忘记？</p>
           </div>
@@ -142,15 +142,18 @@
         }
 
         .pwd-input {
-          display: flex;
+          position: relative;
 
           input {
-            flex: 1;
+            width: 100%;
           }
 
           p {
             color: #5680fa;
             font-size: .22rem;
+            position: absolute;
+            right: 0;
+            bottom: 0;
           }
         }
       }
