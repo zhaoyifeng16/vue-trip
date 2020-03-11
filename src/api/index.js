@@ -45,8 +45,8 @@ export default {
 
   // 登录
   login(userInfo) {
-    let {username, pwd} = userInfo
+    let {email, pwd} = userInfo
     let url = "http://yapi.demo.qunar.com/mock/86871/login"
-    return axios.post(url, `username=${username}&pwd=${pwd}`)
+    return axios.post(url, `email=${email}&pwd=${pwd}`)
   }
 }

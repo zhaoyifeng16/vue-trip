@@ -1,13 +1,11 @@
 <template>
   <div class="my">
-    <Back></Back>
-
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import api from "../api"
-  import Back from "../components/Back";
 
   export default {
     name: "My",
@@ -22,9 +20,6 @@
         })
       }
     },
-    components:{
-      Back
-    }
   }
 </script>
 

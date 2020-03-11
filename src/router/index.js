@@ -14,55 +14,65 @@ import Detail from './../views/Detail.vue'
 import HotelList from './../views/HotelList'
 // 搜索页
 import Search from './../views/Search'
+// 登录
+import Login from './../views/Login'
 
 Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/home',
-        name: 'Home',
-        component: Home,
-    },
-    {
-        path: '/star',
-        name: 'Star',
-        component: Star
-    },
-    {
-        path: '/category',
-        name: 'Category',
-        component: Category
-    },
-    {
-        path: '/my',
-        name: 'My',
-        component: My
-    },
-    {
-        path: "/detail/:id",
-        name: 'Detail',
-        component: Detail
-    },
-    {
-        path: "/hotellist/:id",
-        name: 'HotelList',
-        component: HotelList
-    },
-    {
-        path: "/search/",
-        name: 'Search',
-        component: Search
-    },
-    {
-        path: '/',
-        redirect: 'home',
-    },
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/star',
+    name: 'Star',
+    component: Star
+  },
+  {
+    path: '/category',
+    name: 'Category',
+    component: Category
+  },
+  {
+    path: '/my',
+    name: 'My',
+    component: My,
+    children: [
+      {
+        path: 'login',
+        name: 'Login',
+        component: Login,
+      }
+    ]
+
+  },
+  {
+    path: "/detail/:id",
+    name: 'Detail',
+    component: Detail
+  },
+  {
+    path: "/hotellist/:id",
+    name: 'HotelList',
+    component: HotelList
+  },
+  {
+    path: "/search/",
+    name: 'Search',
+    component: Search
+  },
+  {
+    path: '/',
+    redirect: 'home',
+  },
 ]
 
 const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
 })
 
 export default router
