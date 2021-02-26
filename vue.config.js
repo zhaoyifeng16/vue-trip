@@ -1,7 +1,10 @@
+const path = require("path")
+
 module.exports = {
-  publicPath: '',
   productionSourceMap: false,
   devServer: {
     disableHostCheck: true
-  }
+  },
+  outputDir: "docs",
+	publicPath:"./"
 }
